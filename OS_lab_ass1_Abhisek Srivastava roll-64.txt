@@ -1,0 +1,271 @@
+1.
+~$ touch empty1 empty2 empty3 empty4 empty5
+~$ tree
+.
+├── ass-1
+├── empty1
+├── empty2
+├── empty3
+├── empty4
+└── empty5
+
+0 directories, 6 files
+
+2.
+~$ cat>text.txt
+Abhisek Srivastava
+20
+Sinthi More.
+
+3.
+$ cat text.txt
+Abhisek Srivastava
+20
+Sinthi More.
+
+4.
+$ cp text.txt newtext.txt
+~$ cat newtext.txt
+Abhisek Srivastava
+20
+Sinthi More.
+
+5.
+$ cat>matter.txt
+Leo Messi is my biggest inspiration.
+I wanna see him play once again.
+^C
+~$ cat matter.txt
+Leo Messi is my biggest inspiration.
+I wanna see him play once again.
+
+6.
+~$ cat text.txt matter.txt> textmat.txt
+~$ cat textmat.txt
+Abhisek Srivastava
+20
+Sinthi More.
+Leo Messi is my biggest inspiration.
+I wanna see him play once again.
+
+7.
+~$ rm text.txt
+~$ cat text.txt
+cat: text.txt: No such file or directory
+~$ tree
+.
+├── ass-1
+├── empty1
+├── empty2
+├── empty3
+├── empty4
+├── empty5
+├── matter.txt
+├── newtext.txt
+└── textmat.txt
+
+0 directories, 9 files
+
+8.
+~$ ls -l newtext.txt
+-rw-r--r-- 1 user user 35 Sep 11 20:00 newtext.txt
+~$ chmod 666 newtext.txt
+~$ ls -l newtext.txt
+-rw-rw-rw- 1 user user 35 Sep 11 20:00 newtext.txt
+
+9.
+~$ mv newtext.txt oldtext.txt
+~$ tree
+.
+├── empty1
+├── empty2
+├── empty3
+├── empty4
+├── empty5
+├── matter.txt
+├── oldtext.txt
+└── txtmat.txt
+
+10.
+~$ mkdir mydir
+$ tree
+.
+├── ass-1
+├── empty1
+├── empty2
+├── empty3
+├── empty4
+├── empty5
+├── matter.txt
+├── mydir
+├── oldtext.txt
+└── textmat.txt
+
+1 directory, 9 files
+
+11.
+~$ mv oldtext.txt matter.txt mydir
+~$ tree
+.
+├── ass-1
+├── empty1
+├── empty2
+├── empty3
+├── empty4
+├── empty5
+├── mydir
+│   ├── matter.txt
+│   └── oldtext.txt
+└── textmat.txt
+
+1 directory, 9 files
+
+12.
+~$ mkdir newdir
+~$ tree
+.
+├── ass-1
+├── empty1
+├── empty2
+├── empty3
+├── empty4
+├── empty5
+├── mydir
+│   ├── matter.txt
+│   └── oldtext.txt
+├── newdir
+└── textmat.txt
+
+2 directories, 9 files
+
+13.
+~$ cp mydir/* newdir
+~$ tree
+.
+├── ass-1
+├── empty1
+├── empty2
+├── empty3
+├── empty4
+├── empty5
+├── mydir
+│   ├── matter.txt
+│   └── oldtext.txt
+├── newdir
+│   ├── matter.txt
+│   └── oldtext.txt
+└── textmat.txt
+
+2 directories, 11 files
+
+14.
+~$ date  +%d/%m/%y
+11/09/20
+
+15.
+~$ who
+
+16.
+~$ ls -l
+total 5
+-rw-r--r-- 1 user user   0 Sep 11 16:56 ass-1
+-rw-r--r-- 1 user user   0 Sep 11 16:56 empty1
+-rw-r--r-- 1 user user   0 Sep 11 16:56 empty2
+-rw-r--r-- 1 user user   0 Sep 11 16:56 empty3
+-rw-r--r-- 1 user user   0 Sep 11 16:56 empty4
+-rw-r--r-- 1 user user   0 Sep 11 16:56 empty5
+drwxr-xr-x 2 user user   4 Sep 11 20:16 mydir
+drwxr-xr-x 2 user user   4 Sep 11 20:20 newdir
+-rw-r--r-- 1 user user 105 Sep 11 20:05 textmat.txt
+
+17.
+~$ who -q
+
+# users=0
+
+18.
+"rmdir xyz" command fails to work when the 'xyz'directory is not empty. We have to empty the desired directory before applying 'rmdir'command.
+
+19.
+If 'cd'command is used without any arguments working directory changes to the home directory.
+
+20.
+~$ cat> record.txt
+1        |Leo        |CSE        |Koeman
+2        |Kevin      |IT         |Pep
+3        |Auba       |IT         |Pep
+4        |Ney        |EE         |Tuchel
+5        |Lewa       |ECE        |Flick
+6        |Frenkie    |CSE        |Koeman
+7        |Toni       |CSE        |Koeman
+8        |Van Dijk   |IT         |Pep
+9        |Kylian     |EE         |Tuchel
+10       |Joshua     |ECE        |Flick            
+^C
+~$ cut -d "|" -f 1,3 record.txt
+1        |CSE        
+2        |IT         
+3        |IT         
+4        |EE         
+5        |ECE        
+6        |CSE        
+7        |CSE        
+8        |IT         
+9        |EE         
+10       |ECE        
+~$ sort -k 2 record.txt
+3        |Auba       |IT         |Pep
+6        |Frenkie    |CSE        |Koeman
+2        |Kevin      |IT         |Pep
+9        |Kylian     |EE         |Tuchel
+1        |Leo        |CSE        |Koeman
+5        |Lewa       |ECE        |Flick
+4        |Ney        |EE         |Tuchel
+7        |Toni       |CSE        |Koeman
+8        |Van Dijk   |IT         |Pep
+10       |Joshua     |ECE        |Flick
+
+21.
+~$ cat> test.txt
+I am a boy. I am currently pursuing my grads
+I am a boy and I am 20 years old
+I am a boy who loves football and photography
+^C
+~$ grep -i "i Am a BoY" test.txt                   // for case insensitive search
+I am a boy. I am currently pursuing my grads
+I am a boy and I am 20 years old
+I am a boy who loves football and photography
+~$ grep -c "I am a boy" test.txt                  //to count the number of matches      
+3
+~$ grep -l "I am a boy" *                         //to display the file name that matches
+grep: mydir: Is a directory
+grep: newdir: Is a directory
+test.txt
+~$ grep -w "I am a boy" test.txt                 //to display the whole words in the file
+I am a boy. I am currently pursuing my grads
+I am a boy and I am 20 years old
+I am a boy who loves football and photography
+~$ grep -o "I am a boy" test.txt                //to display only the searched word(s)
+I am a boy
+I am a boy
+I am a boy
+~$ grep -n "I am a boy" test.txt                //to display the line numbers along with the searched words in output
+1:I am a boy. I am currently pursuing my grads
+2:I am a boy and I am 20 years old
+3:I am a boy who loves football and photography
+
+22.
+~$ cat> sort.txt
+46
+79
+10
+34
+29
+^C
+~$ 
+~$ sort -n sort.txt
+10
+29
+34
+46
+79

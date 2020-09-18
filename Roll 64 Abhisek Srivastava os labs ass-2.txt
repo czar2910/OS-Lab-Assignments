@@ -1,0 +1,107 @@
+1.
+[using a third variable]
+~$ touch swap.sh
+~$ cat>swap.sh
+n1=10
+n2=12
+temp=$n1
+n1=$n2
+n2=$temp
+echo "after swapping the first number is $n1 and the second number is $n2"
+^Z
+[1]+  Stopped                 cat > swap.sh
+~$ sh swap.sh
+after swapping the first number is 12 and the second number is 10
+
+[without using the third variable]
+~$ touch swapping.sh
+~$ cat>swapping.sh
+n1=15
+n2=18
+n1=`expr $n1 + $n2`
+n2=`expr $n1 - $n2`
+n1=`expr $n1 - $n2`
+echo "after swapping the first number is $n1 and the second number is $n2"
+^Z
+[2]+  Stopped                 cat > swapping.sh
+~$ sh swapping.sh
+after swapping the first number is 18 and the second number is 15
+
+
+
+2.
+~$ touch si.sh
+~$ cat>si.sh
+echo "enter principal amount"
+read p
+echo "enter rate of interest"
+read r 
+echo "enter time"
+read t
+si=`expr $p \* $r \* $t / 100`
+echo "the interest earned is $si"
+^Z
+[3]+  Stopped                 cat > si.sh
+~$ sh si.sh
+enter principal amount
+15000
+enter rate of interest
+5
+enter time
+3
+the interest earned is 2250
+
+
+
+3.
+~$ touch temp.sh
+~$ cat>temp.sh
+echo "enter the value of centigrade"
+read c
+f=$(echo "scale=2;((9/5) * $c) + 32" |bc)     
+echo "$c C= $f F"
+^Z
+[4]+  Stopped                 cat > temp.sh
+~$ sh temp.sh
+enter the value of centigrade
+29
+29 C= 84.20 F
+
+
+
+4.
+~$ touch area.sh
+~$ cat>area.sh
+echo "enter the three side"
+read a
+read b
+read c
+s=$(echo "scale=2;($a + $b + $c)/2" |bc)
+a=$(echo "scale=2;($s * ($s - $a) * ($s - $b) * ($s - $c))" |bc)
+area=$(echo "scale=2;sqrt($a)" |bc)
+echo "The area of the triangle is $area "
+^Z
+[5]+  Stopped                 cat > area.sh
+~$ sh area.sh
+enter the three side
+5
+7
+4
+The area of the triangle is 9.79 
+
+
+
+5.
+~$ touch fpn.sh
+~$ cat>fpn.sh
+echo "scale=2;0.86 * 0.86" |bc  
+echo "scale=3;8.56 / 7.15" |bc
+echo "scale=2;-7.89 / 2.56" |bc
+echo "scale=2;-5 - -3.5" |bc
+^Z
+[7]+  Stopped                 cat > fpn.sh
+~$ sh fpn.sh
+.73
+1.197
+-3.08
+-1.5

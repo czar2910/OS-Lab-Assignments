@@ -1,0 +1,83 @@
+1.
+~$ touch file.sh
+~$ cat>file.sh
+nfile=$1
+if [ -f $nfile ];
+then
+echo "$(ls -la $nfile | head -c 10)"
+else
+touch "$nfile"
+echo "file created"
+echo "$(ls -la $nfile | head -c 10)"
+fi
+^Z
+[1]+  Stopped                 cat > file.sh
+~$ sh file.sh
+total 54
+d
+~$ sh file.sh newfile.txt
+file created
+-rw-r--r--
+
+
+
+2.
+~$ touch float.sh
+~$ cat>float.sh
+echo "scale=2;0.86 * 0.86" |bc  
+echo "scale=3;8.56 / 7.15" |bc
+echo "scale=2;-7.89 / 2.56" |bc
+echo "scale=2;-5 - -3.5" |bc
+^Z
+[7]+  Stopped                 cat > fpn.sh
+~$ sh fpn.sh
+.73
+1.197
+-3.08
+-1.5
+
+
+
+3.
+~$ touch number.sh
+~$ cat>number.sh
+echo "Enter the two numbers"
+read a
+read b
+if [ $a -gt $b ]
+then
+echo $a
+else
+echo $b
+fi
+^Z
+[1]+  Stopped                 cat > number.sh
+~$ sh number.sh
+Enter the two numbers
+10
+7
+10
+
+
+
+4.
+~$ touch eo.sh
+~$ cat>eo.sh
+echo "Enter a number"       
+read a
+if [ $((a%2)) -eq 0 ]
+then
+echo "Number is even"
+else
+echo "Number is odd"
+fi
+^Z
+[4]+  Stopped                 cat > eo.sh
+~$ sh eo.sh
+Enter a number
+79
+Number is odd
+~$ sh eo.sh
+Enter a number
+10
+Number is even

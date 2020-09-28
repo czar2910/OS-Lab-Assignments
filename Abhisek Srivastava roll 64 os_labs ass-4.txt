@@ -1,0 +1,95 @@
+1.
+~$ cat>f1.txt
+Leo Messi is a right winger. And he also plays in the offensive midfield.  
+^C
+~$ cat>f2.txt
+Koeman is the new barca manager.
+^C
+~$ touch f3.txt
+~$ touch c1.txt
+~$ cat>c1.sh
+read a
+case $a in
+1)      cat f1.txt f2.txt>f3.txt
+        cat f3.txt ;;
+2)      grep -o "Leo" f1.txt ;;
+*)      echo "invalid" ;;
+esac
+^Z
+[7]+  Stopped                 cat > c1.sh
+~$ sh c1.sh
+2
+Leo
+~$ sh c1.sh
+1
+Leo Messi is a right winger. And he also plays in the offensive midfield.
+Koeman is the new barca manager.
+~$ sh c1.sh
+5
+invalid
+
+
+
+2.
+~$ cat>abc.txt
+I am a student.
+I study in Stcet
+I am in 3rd year
+I am in CSE dept.
+We are doing shell programming.
+^C
+~$ cat>c02.sh
+echo 'enter filename'
+read file01
+echo 'enter starting line'
+read l
+echo 'enter number of lines'
+read n
+tail -n +$l $file01| head -$n
+^Z
+[10]+  Stopped                 cat > c02.sh
+~$ sh c02.sh
+enter filename
+abc.txt
+enter starting line
+2
+enter number of lines
+5
+I study in Stcet
+I am in 3rd year
+I am in CSE dept.
+We are doing shell programming.
+
+
+
+3.
+~$ cat>abc.txt
+I am a student.
+I study in Stcet
+I am in 3rd year
+I am in CSE dept.
+We are doing shell programming.
+^C
+~$ touch c3.sh
+~$ cat>c3.sh
+read n
+case $n in
+1)who -q -H ;;
+2)read $n
+head -$n abc.txt ;;
+3)touch -a abc.txt ;;
+*)echo 'invalid' ;;
+esac
+^Z
+[14]+  Stopped                 cat > c3.sh
+~$ sh c3.sh
+2
+3
+I am a student.
+I study in Stcet
+~$ sh c3.sh
+1
+# users=0
+~$ sh c3.sh
+6
+invalid
